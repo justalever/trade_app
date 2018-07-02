@@ -1,7 +1,12 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :trades
+
+  resources :conversations do
+    resources :messages
+  end
+
   devise_for :users
-  root to: 'home#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: 'trades#index'
 end

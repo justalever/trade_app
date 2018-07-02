@@ -1,0 +1,44 @@
+<div class="columns">
+  <div class="column is-8">
+    <h1 class="title is-1"><%= @trade.title %></h1>
+    <div class="content">
+      <p class="pb3 border-bottom">Post <%= time_ago_in_words(@trade.created_at) %> ago</p>
+      <div class="pt1"><%= sanitize markdown_to_html(@trade.description) %></div>
+    </div>
+
+    <% if @trade.images.attached? %>
+      <div class="columns is-multiline">
+        <% @trade.images.each do |image| %>
+          <div class="column is-one-third">
+            <%= image_tag image.variant(resize: "800x600>") %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="column is-3 is-offset-1">
+    <% if trade_author(@trade) %>
+      <div class="bg-light pa3 mb4 border-radius-3">
+        <p class="f6 pb1">Author actions:</p>
+        <div class="button-group">
+          <%= link_to "Edit trade: #{@trade.title}", edit_trade_path(@trade), class: 'button is-small' %>
+          <%= link_to "Back", trades_path, class: "button is-small" %>
+        </div>
+      </div>
+    <% end %>
+    <div class="pr5 mb4">
+      <p class="text-align-left f6">Trade author:</p>
+      <div class="inline-block nudge-down-10"><%= gravatar_for @trade.user, size: 32 %></div>
+      <div class="inline-block"><%= @trade.user.name %></div>
+    </div>
+    <% if user_signed_in? && current_user.id != @trade.user_id %>
+      <%= link_to "Message #{@trade.user.name}", conversations_path(sender_id: current_user.id, recipient_id: @trade.user.id), method: 'post', class:"button is-link" %>
+    <% elsif user_signed_in? && current_user.id == @trade.user_id  %>
+      <%= link_to "Conversations", conversations_path %>
+    <% else %>
+
+    <%= link_to "Sign up to message #{@trade.user.name}", new_user_registration_path %>
+    <% end %>
+  </div>
+</div>

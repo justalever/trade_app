@@ -1,0 +1,9 @@
+<h1 class="title is-1">Trades</h1>
+<p class="subtitle is-5">Looking to get rid of gear but not lose money. Trade some of your gear!</p>
+<div class="columns">
+<% @trades.each do |trade| %>
+  <div class="column is-3">
+    <%= render trade, trade: trade %>
+  </div>
+<% end %>
+</div>

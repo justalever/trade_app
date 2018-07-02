@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-image">
+    <figure class="image is-square">
+      <%= link_to image_tag(trade.images.first.variant(resize: "640x480>")), trade %>
+    </figure>
+  </div>
+  <div class="card-content">
+    <h3 class="pt1 title is-5"><%= trade.title %></h3>
+    <p class="pv1"><%= truncate(trade.description, length: 120) %></p>
+    <div class="media pt3">
+      <div class="media-left pt3">
+        <figure class="image is-48x48">
+          <%= gravatar_for(trade.user, size: 96) %>
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="has-text-weight-bold mb0"><%= trade.user.name %></p>
+        <p class="is-italic mb0"><time>posted <%= time_ago_in_words(trade.created_at) %> ago</time></p>
+      </div>
+    </div>
+  </div>
+</div>
