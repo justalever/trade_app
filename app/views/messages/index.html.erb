@@ -21,8 +21,6 @@
   <% end %>
 </section>
 
-
-
 <%= form_for [@conversation, @message] do |f| %>
   <%= f.text_area :body, class: "textarea", placeholder: "Inquire about a trade..." %>
   <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
