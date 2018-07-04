@@ -1,4 +1,7 @@
-# Create a trading app with in-app messaging
+# Let's Build: With Ruby on Rails - Trade App With In–App Messaging
+
+![Let's Build: With Ruby on Rails - Trade App With In–App Messaging](https://i.imgur.com/dzAi3Zc.jpg)
+
 Welcome to my latest _Let's Build: With Ruby on Rails_ series. This build will dive a little deeper into relationships within a Ruby on Rails application and teach you have to create a simple messaging app within your main rails app.
 
 Think of the messaging strucuture like an ongoing converstation. Users can initially create a conversation and always look back to their history. This app is a _start_ to what could be a fully featured messaging area within your own app but I want to introduce new methods include scopes, params, and more that come bundled with Rails.
@@ -8,6 +11,7 @@ I created my own Rails application template called [Kick Off](https://github.com
 
 At the time of this recording I am using `Rails 5.2` and `Ruby 2.5.1`.
 
+[Download the source code](https://github.com/justalever/trade_app)
 
 ### Scaffold the trade
 ```bash
